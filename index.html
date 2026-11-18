@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Projet de Français | Paris</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #f9f8f6;
+            --navy: #1a2942;
+            --gold: #c5a059;
+            --text-main: #333333;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .text-gold { color: var(--gold); }
+        .bg-navy { background-color: var(--navy); }
+        .text-navy { color: var(--navy); }
+
+        /* 3D Environment Setup */
+        .perspective-container {
+            perspective: 1200px;
+        }
+        
+        .preserve-3d {
+            transform-style: preserve-3d;
+        }
+
+        /* 3D Tilt Card Base */
+        .tilt-card {
+            transition: transform 0.15s ease-out, box-shadow 0.3s ease-out;
+            box-shadow: 
+                0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            will-change: transform;
+        }
+
+        .tilt-card:hover {
+            box-shadow: 
+                0 25px 50px -12px rgba(26, 41, 66, 0.25),
+                0 0 20px rgba(197, 160, 89, 0.1);
+            z-index: 10;
+        }
+
+        /* Z-Axis Translations for Layered Depth */
+        .tz-10 { transform: translateZ(10px); }
+        .tz-20 { transform: translateZ(20px); }
+        .tz-30 { transform: translateZ(30px); }
+        .tz-40 { transform: translateZ(40px); }
+        .tz-50 { transform: translateZ(50px); }
+        .tz-60 { transform: translateZ(60px); }
+
+        /* Scroll Reveal Animations */
+        .reveal-3d {
+            opacity: 0;
+            transform: translateY(60px) translateZ(-50px) rotateX(-10deg);
+            transition: opacity 0.9s ease-out, transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-origin: bottom center;
+        }
+
+        .reveal-3d.active {
+            opacity: 1;
+            transform: translateY(0) translateZ(0) rotateX(0);
+        }
+
+        /* Parallax Backgrounds */
+        .parallax-hero {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Custom formatting for long text */
+        .prose-custom p {
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+            color: #4a5568;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-500 backdrop-blur-lg bg-white/90 border-b border-gray-200" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-serif font-bold text-navy tracking-wide">
+                Projet Paris<span class="text-gold">.</span>
+            </div>
+            <div class="hidden lg:flex space-x-8 text-sm font-medium text-gray-700">
+                <a href="#introduction" class="hover:text-gold transition-colors">Introduction</a>
+                <a href="#monuments" class="hover:text-gold transition-colors">Monuments</a>
+                <a href="#culture" class="hover:text-gold transition-colors">Culture & Religion</a>
+                <a href="#restaurants" class="hover:text-gold transition-colors">Restaurants</a>
+                <a href="#hotels" class="hover:text-gold transition-colors">Hotels</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative h-[90vh] flex items-center justify-center parallax-hero perspective-container" style="background-image: linear-gradient(to bottom, rgba(26, 41, 66, 0.4), rgba(26, 41, 66, 0.9)), url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=2000&q=80');">
+        <div class="text-center text-white px-6 preserve-3d w-full max-w-4xl" id="hero-content">
+            <span class="text-gold tracking-[0.2em] uppercase text-sm md:text-base font-semibold block mb-4 tz-30 shadow-sm">
+                French Project-Based Learning
+            </span>
+            <h1 class="text-6xl md:text-8xl font-serif font-bold mb-6 tz-60 drop-shadow-2xl">
+                L'Esprit de Paris
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg md:text-xl text-gray-200 tz-40 font-light leading-relaxed">
+                A comprehensive research project exploring the historical monuments, rich cultural traditions, gastronomy, and legendary hospitality of the French capital.
+            </p>
+            <div class="mt-12 tz-20">
+                <a href="#introduction" class="inline-block bg-gold text-white hover:bg-white hover:text-navy transition-all duration-300 px-8 py-4 rounded-full text-sm font-semibold tracking-wide shadow-xl">
+                    Begin the Tour
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Introduction & City Specialties -->
+    <section id="introduction" class="py-24 md:py-32 bg-white relative z-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal-3d prose-custom">
+                    <h2 class="text-sm font-bold text-gold uppercase tracking-widest mb-2">Introduction</h2>
+                    <h3 class="text-4xl md:text-5xl font-serif text-navy mb-8">The Heart of France</h3>
+                    <p>
+                        Paris, the capital of France, is often referred to as the "City of Light" (La Ville Lumière). For this project, I chose to research Paris because its influence on global culture, art, and history is unmatched. Historically, it was a center of education and ideas during the Age of Enlightenment. Today, it remains a global hub for politics, science, and the arts.
+                    </p>
+                    <p>
+                        Beyond its museums and architecture, Paris is defined by two major specialties: gastronomy and fashion. The French culinary tradition is listed as an Intangible Cultural Heritage by UNESCO. In Paris, this means an endless array of boulangeries offering perfectly baked baguettes, fromageries selling hundreds of regional cheeses, and bistros serving traditional meals with local wines. 
+                    </p>
+                    <p>
+                        Furthermore, Paris is arguably the fashion capital of the world. It is the birthplace of <em>Haute Couture</em>, a legally protected term in France that refers to the creation of exclusive custom-fitted clothing. Twice a year, Paris Fashion Week dictates global trends, continuing a legacy built by legendary Parisian houses like Chanel, Dior, and Yves Saint Laurent.
+                    </p>
+                </div>
+                <div class="reveal-3d perspective-container">
+                    <div class="tilt-card preserve-3d relative rounded-2xl overflow-hidden h-[600px]">
+                        <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1000&q=80" alt="Parisian Street Fashion" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-8 w-full preserve-3d">
+                            <h4 class="text-white text-2xl font-serif tz-40 mb-2">Haute Couture & Gastronomy</h4>
+                            <p class="text-gray-200 tz-20 text-sm">The pillars of modern Parisian identity.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Famous Monuments -->
+    <section id="monuments" class="py-24 md:py-32 bg-cream border-y border-gray-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 reveal-3d">
+                <span class="text-gold tracking-widest uppercase text-sm font-bold mb-3 block">Architecture & History</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-navy mb-6">Famous Monuments</h2>
+                <div class="w-16 h-1 bg-gold mx-auto rounded"></div>
+                <p class="mt-6 text-gray-600 max-w-2xl mx-auto text-lg">
+                    The skyline of Paris is a timeline of architectural evolution. These three monuments represent distinct eras of French history, from classical antiquity to the industrial revolution.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 perspective-container">
+                
+                <!-- Eiffel Tower -->
+                <div class="tilt-card rounded-2xl overflow-hidden bg-white preserve-3d h-[550px] reveal-3d flex flex-col cursor-crosshair">
+                    <div class="h-1/2 relative overflow-hidden preserve-3d">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKS2xRonc2yQm58IpVgslNeH9_oDO1pPcP66JfsAiYxrHs88k16wS1HEE&s=10" alt="Eiffel Tower" class="w-full h-full object-cover tz-10">
+                    </div>
+                    <div class="p-8 h-1/2 flex flex-col justify-center preserve-3d bg-white">
+                        <h3 class="text-2xl font-serif text-navy tz-40 mb-3">La Tour Eiffel</h3>
+                        <p class="text-gray-600 text-sm tz-20 leading-relaxed">
+                            Constructed by Gustave Eiffel for the 1889 Exposition Universelle to celebrate the 100th anniversary of the French Revolution. Initially criticized by Parisian artists for its industrial iron lattice design, it was almost torn down in 1909. Today, at 330 meters tall, it is the undisputed symbol of France.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- The Louvre -->
+                <div class="tilt-card rounded-2xl overflow-hidden bg-white preserve-3d h-[550px] reveal-3d flex flex-col cursor-crosshair" style="transition-delay: 150ms;">
+                    <div class="h-1/2 relative overflow-hidden preserve-3d">
+                        <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=800&q=80" alt="The Louvre" class="w-full h-full object-cover tz-10">
+                    </div>
+                    <div class="p-8 h-1/2 flex flex-col justify-center preserve-3d bg-white">
+                        <h3 class="text-2xl font-serif text-navy tz-40 mb-3">Le Musée du Louvre</h3>
+                        <p class="text-gray-600 text-sm tz-20 leading-relaxed">
+                            Originally built as a fortress in the 12th century and later serving as a royal palace, the Louvre is now the world's largest and most visited art museum. The modern glass pyramid in the courtyard, designed by I.M. Pei in 1989, creates a striking contrast with the classical French Renaissance architecture.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Le Panthéon -->
+                <div class="tilt-card rounded-2xl overflow-hidden bg-white preserve-3d h-[550px] reveal-3d flex flex-col cursor-crosshair" style="transition-delay: 300ms;">
+                    <div class="h-1/2 relative overflow-hidden preserve-3d">
+                        <img src="https://cdn.britannica.com/13/123413-050-6572DF6D/Pantheon-Paris.jpg" alt="Panthéon" class="w-full h-full object-cover tz-10">
+                    </div>
+                    <div class="p-8 h-1/2 flex flex-col justify-center preserve-3d bg-white">
+                        <h3 class="text-2xl font-serif text-navy tz-40 mb-3">Le Panthéon</h3>
+                        <p class="text-gray-600 text-sm tz-20 leading-relaxed">
+                            Located in the Latin Quarter, this neoclassical monument was originally built as a church dedicated to St. Genevieve. Following the Revolution, it was transformed into a secular mausoleum. It houses the remains of distinguished French citizens, including writers Voltaire, Jean-Jacques Rousseau, and Victor Hugo.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Cultural & Religious Activities -->
+    <section id="culture" class="py-24 md:py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 reveal-3d">
+                <span class="text-gold tracking-widest uppercase text-sm font-bold mb-3 block">Society & Beliefs</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-navy mb-6">Cultural & Religious Life</h2>
+                <div class="w-16 h-1 bg-gold mx-auto rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+                <div class="reveal-3d perspective-container order-2 lg:order-1">
+                    <div class="tilt-card preserve-3d relative rounded-2xl overflow-hidden h-[500px]">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEWBOv3H3DsdrY7E7HpzQ4D5hu-8KaADkMmsY3S7aJSkRrtKZK384rTFjf&s=10" alt="Notre Dame" class="absolute inset-0 w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-navy/20"></div>
+                    </div>
+                </div>
+                <div class="reveal-3d prose-custom order-1 lg:order-2">
+                    <h3 class="text-3xl font-serif text-navy mb-6">Religious Heritage</h3>
+                    <p>
+                        France is historically a Catholic nation, and Paris holds some of the most significant religious sites in Europe. <strong>Cathédrale Notre-Dame de Paris</strong> is a masterpiece of French Gothic architecture. Before the 2019 fire, its religious ceremonies, particularly the Midnight Mass on Christmas Eve (<em>La Messe de Minuit</em>), drew thousands of worshipers and tourists. The church is central to the local Catholic community and Parisian identity.
+                    </p>
+                    <p>
+                        On the highest point in the city sits the <strong>Basilique du Sacré-Cœur</strong> in Montmartre. Dedicated to the Sacred Heart of Jesus, it has maintained a perpetual adoration of the Holy Eucharist since 1885. Pilgrims and locals gather here not just for the religious significance, but also for the profound sense of community it provides above the busy city streets.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal-3d prose-custom">
+                    <h3 class="text-3xl font-serif text-navy mb-6">Secular Traditions & Festivals</h3>
+                    <p>
+                        Beyond religion, Paris is defined by its vibrant secular and civic traditions. <strong>La Fête de la Musique</strong> takes place every year on June 21st, the summer solstice. On this day, the streets, cafes, and parks of Paris are filled with musicians playing for free. It breaks down social barriers, allowing citizens of all backgrounds to share in the joy of live music.
+                    </p>
+                    <p>
+                        The most important national holiday is <strong>Bastille Day (La Fête Nationale)</strong> on July 14th. It commemorates the storming of the Bastille prison in 1789, a turning point in the French Revolution. In Paris, the day is marked by a massive military parade down the Champs-Élysées, attended by the President, followed by community dances (<em>bals des pompiers</em>) in fire stations, and a spectacular fireworks display at the Eiffel Tower.
+                    </p>
+                </div>
+                <div class="reveal-3d perspective-container">
+                    <div class="tilt-card preserve-3d relative rounded-2xl overflow-hidden h-[500px]">
+                        <img src="https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=1000&q=80" alt="Bastille Day Fireworks" class="absolute inset-0 w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Famous Restaurants -->
+    <section id="restaurants" class="py-24 md:py-32 bg-navy text-white relative parallax-hero" style="background-image: linear-gradient(to bottom, rgba(26, 41, 66, 0.95), rgba(26, 41, 66, 0.95)), url('https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?auto=format&fit=crop&w=2000&q=80');">
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-20 reveal-3d">
+                <h2 class="text-4xl md:text-5xl font-serif mb-6 text-white">Culinary Landmarks</h2>
+                <div class="w-16 h-1 bg-gold mx-auto rounded"></div>
+                <p class="mt-6 text-gray-300 max-w-2xl mx-auto text-lg">
+                    Parisian restaurants are institutions of history and art. From high-altitude fine dining to intellectual cafes, they offer unique experiences.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 perspective-container">
+                
+                <!-- Restaurant 1 -->
+                <div class="tilt-card bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 preserve-3d reveal-3d flex flex-col justify-center">
+                    <span class="text-gold text-sm font-bold uppercase tracking-widest tz-20 block mb-3">Michelin Star Dining</span>
+                    <h3 class="text-3xl font-serif text-white tz-40 mb-4">Le Jules Verne</h3>
+                    <p class="text-gray-300 text-sm tz-30 leading-relaxed mb-6">
+                        Located literally inside the Eiffel Tower on the second floor, Le Jules Verne offers breathtaking views of Paris from 125 meters up. Under the direction of renowned chefs (currently Frédéric Anton), the restaurant serves contemporary French gastronomic cuisine. Dining here is a highly exclusive cultural experience, blending architectural marvel with exceptional culinary art like their signature crab with Granny Smith apple and tarragon.
+                    </p>
+                </div>
+
+                <!-- Restaurant 2 -->
+                <div class="tilt-card bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 preserve-3d reveal-3d flex flex-col justify-center" style="transition-delay: 200ms;">
+                    <span class="text-gold text-sm font-bold uppercase tracking-widest tz-20 block mb-3">Historic Café</span>
+                    <h3 class="text-3xl font-serif text-white tz-40 mb-4">Café de Flore</h3>
+                    <p class="text-gray-300 text-sm tz-30 leading-relaxed mb-6">
+                        Situated at the corner of Boulevard Saint-Germain, Café de Flore is one of the oldest coffeehouses in Paris. During the 1940s and 50s, it was the headquarters for the Existentialist movement; philosophers like Jean-Paul Sartre and Simone de Beauvoir spent their days writing here. Today, tourists and locals alike sit on its green wicker chairs, ordering the classic French onion soup or a simple espresso, absorbing the intellectual history of the city.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Historic Hotels -->
+    <section id="hotels" class="py-24 md:py-32 bg-cream">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20 reveal-3d">
+                <span class="text-gold tracking-widest uppercase text-sm font-bold mb-3 block">Luxury & Hospitality</span>
+                <h2 class="text-4xl md:text-5xl font-serif text-navy mb-6">Historic Hotels</h2>
+                <div class="w-16 h-1 bg-gold mx-auto rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 perspective-container">
+                
+                <!-- Hotel Ritz -->
+                <div class="tilt-card preserve-3d rounded-2xl overflow-hidden bg-white reveal-3d">
+                    <div class="h-64 relative overflow-hidden preserve-3d">
+                        <img src="https://media.ritzparis.com/medias/domain12964/media100091/27356-5i07v25jed-web4k.jpg?twic=v1/cover=780x872/quality=85" alt="Hotel Ritz" class="w-full h-full object-cover tz-10">
+                    </div>
+                    <div class="p-10 preserve-3d">
+                        <h3 class="text-2xl font-serif text-navy tz-40 mb-4">Hôtel Ritz Paris</h3>
+                        <p class="text-gray-600 text-sm tz-20 leading-relaxed">
+                            Overlooking the Place Vendôme, the Ritz Paris is synonymous with opulence. Opened by Swiss hotelier César Ritz in 1898, it was the first hotel in Europe to provide an en-suite bathroom, a telephone, and electricity for each room. It famously served as the home of fashion designer Coco Chanel for over 30 years and was heavily frequented by writer Ernest Hemingway, who has a bar named after him inside. The Ritz represents the pinnacle of classical French interior design and luxury.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Le Meurice -->
+                <div class="tilt-card preserve-3d rounded-2xl overflow-hidden bg-white reveal-3d" style="transition-delay: 200ms;">
+                    <div class="h-64 relative overflow-hidden preserve-3d">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/d8/c1/39/le-meurice-paris.jpg?w=900&h=500&s=1" alt="Le Meurice" class="w-full h-full object-cover tz-10">
+                    </div>
+                    <div class="p-10 preserve-3d">
+                        <h3 class="text-2xl font-serif text-navy tz-40 mb-4">Le Meurice</h3>
+                        <p class="text-gray-600 text-sm tz-20 leading-relaxed">
+                            Located on the Rue de Rivoli opposite the Tuileries Garden, Le Meurice opened in 1815. Known as the "Hotel of Kings" due to its historical royal clientele, its interior features extravagant Louis XVI decor combined with modern design elements by Philippe Starck. The surrealist painter Salvador Dalí famously spent a month there every year. The hotel is a living museum of French decorative arts and high society history.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-navy border-t border-white/10 py-16 text-center text-white relative z-20">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl font-serif mb-6">L'Esprit de Paris</h2>
+            <div class="w-12 h-[2px] bg-gold mx-auto mb-6"></div>
+            <p class="text-gray-400 text-sm leading-relaxed mb-8 max-w-lg mx-auto">
+                This website was created as a final submission for a French Project-Based Learning assignment, focusing on the cultural, architectural, and historical significance of the French capital.
+            </p>
+            <p class="text-gold text-sm font-semibold tracking-widest uppercase">
+                Projet de Français 
+            </p>
+        </div>
+    </footer>
+
+    <!-- Interactive 3D JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Scroll Reveal Logic (Intersection Observer)
+            const revealElements = document.querySelectorAll('.reveal-3d');
+            
+            const revealOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('active');
+                    // Stop observing once revealed to keep the animation completed
+                    observer.unobserve(entry.target); 
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => revealOnScroll.observe(el));
+
+
+            // 2. Dynamic 3D Tilt Hover Effect
+            const tiltCards = document.querySelectorAll('.tilt-card');
+            
+            tiltCards.forEach(card => {
+                card.addEventListener('mousemove', handleTilt);
+                card.addEventListener('mouseleave', resetTilt);
+                // Optional: handle enter to smooth transition initiation
+                card.addEventListener('mouseenter', () => {
+                    card.style.transition = 'transform 0.1s ease-out, box-shadow 0.1s ease-out';
+                });
+            });
+
+            function handleTilt(e) {
+                const card = this;
+                const cardRect = card.getBoundingClientRect();
+                
+                // Calculate mouse position relative to the exact center of the card
+                const centerX = cardRect.left + cardRect.width / 2;
+                const centerY = cardRect.top + cardRect.height / 2;
+                
+                const mouseX = e.clientX - centerX;
+                const mouseY = e.clientY - centerY;
+                
+                // Calculate rotation based on mouse position. 
+                // Dividing by a larger number reduces the tilt angle (max tilt is dependent on card size)
+                // Multiplier controls the intensity of the tilt.
+                const intensity = 15; 
+                const rotateX = (mouseY / (cardRect.height / 2)) * -intensity; 
+                const rotateY = (mouseX / (cardRect.width / 2)) * intensity;
+                
+                // Apply the calculated 3D rotation
+                card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            }
+
+            function resetTilt(e) {
+                const card = this;
+                // Add longer transition just for the snap-back
+                card.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.5s ease-out';
+                card.style.transform = `rotateX(0deg) rotateY(0deg)`;
+            }
+
+            // 3. Parallax and Navbar scroll logic
+            const heroContent = document.getElementById('hero-content');
+            const navbar = document.getElementById('navbar');
+
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                
+                // Hero parallax effect (only run if near top of page)
+                if (scrollY < window.innerHeight) {
+                    // Translate down and fade out slightly
+                    heroContent.style.transform = `translateY(${scrollY * 0.3}px)`;
+                    heroContent.style.opacity = Math.max(0, 1 - (scrollY / 700));
+                }
+
+                // Navbar styling on scroll
+                if (scrollY > 50) {
+                    navbar.classList.add('shadow-lg', 'bg-white/95');
+                    navbar.classList.remove('bg-white/90');
+                } else {
+                    navbar.classList.remove('shadow-lg', 'bg-white/95');
+                    navbar.classList.add('bg-white/90');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
